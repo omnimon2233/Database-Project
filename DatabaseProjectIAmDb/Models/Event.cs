@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace DatabaseProjectIAmDb.Models
     public class Event
     {
         [Key]
-        public int Event_id { get; set; }
+        public int Event_Id { get; set; }
 
         [Required]
         [StringLength(50, MinimumLength =5)]
@@ -33,12 +34,13 @@ namespace DatabaseProjectIAmDb.Models
         public DateTime Date { get; set; }
 
         [Required]
+        [Index("Idx_event_type")]
         public string Event_Type { get; set; }
 
         [RegularExpression(@"^\d{1, 8}\.\d{2}$", ErrorMessage = "Must have a dollar value of at least 1.00 and must be formatted the same way.")]
         public double Event_Total { get; set; }
 
-        [RegularExpression(@"^[0-1]{1}$", ErrorMessage = "Must have a dollar value of at least 1.00 and must be formatted the same way.")]
+        [RegularExpression(@"^[0-1]{1}$", ErrorMessage = "Must either be true or false.")]
         public int Event_Close { get; set; }
 
 

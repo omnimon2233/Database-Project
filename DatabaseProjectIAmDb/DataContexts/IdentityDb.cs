@@ -1,17 +1,14 @@
 ﻿using DatabaseProjectIAmDb.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace DatabaseProjectIAmDb.DataContexts
 {
-    public class IdentityDb : IdentityDbContext<ApplicationUser>
+    public class IdentityDb : IdentityDbContext<ApplicationUser, CustomRole, int,
+                                CustomUserLogin, CustomUserRole, CustomUserClaim>
     {
         public IdentityDb()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("DefaultConnection")
         {
         }
 
@@ -19,5 +16,14 @@ namespace DatabaseProjectIAmDb.DataContexts
         {
             return new IdentityDb();
         }
+
+        public DbSet<Item> Items { get; set; }
+        public DbSet<Donor> Donors { get; set; }
+        public DbSet<Event> Events { get; set; }
+        public DbSet<Item_In_Transaction> ItemsInTransactions { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<Person> People { get; set; }
+
+
     }
 }

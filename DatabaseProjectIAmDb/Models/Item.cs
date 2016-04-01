@@ -12,9 +12,11 @@ namespace DatabaseProjectIAmDb.Models
     public class Item
     {
         [Key]
-        public int Item_id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Item_Id { get; set; }
 
         [Required]
+        [Index("Idx_item_name")]
         [StringLength(40, MinimumLength =2)]
         public String Name { get; set; }
 
@@ -41,15 +43,15 @@ namespace DatabaseProjectIAmDb.Models
         public double Buyout_Price { get; set; }
 
         [Required]
-        [ForeignKey("Donor")]
+        //[ForeignKey("Donor")]
         public int Donor_Id { get; set; }
 
-        [ForeignKey("Event")]
-        public int Event_Id { get; set; }
+        //[ForeignKey("Event")]
+        public virtual int? Event_Id { get; set; }
 
         [DisplayName("Bidder Id")]
-        [ForeignKey("Person")]
-        public int Person_Id { get; set; }
+        //[ForeignKey("Person")]
+        public virtual int? Person_Id { get; set; }
 
 
     }

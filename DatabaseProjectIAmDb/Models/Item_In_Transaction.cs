@@ -12,12 +12,12 @@ namespace DatabaseProjectIAmDb.Models
     {
         [Key]
         [Column(Order = 1)]
-        [ForeignKey("Transaction")]
+       // [ForeignKey("Transaction")]
         public virtual int Transaction_Id { get; set; }
 
         [Key]
         [Column(Order = 2)]
-        [ForeignKey("Person")]
+        //[ForeignKey("Item")]
         public virtual int Item_Id { get; set; }
     }
 }

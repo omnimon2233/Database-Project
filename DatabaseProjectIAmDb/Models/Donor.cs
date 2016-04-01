@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DatabaseProjectIAmDb.Models
 {
     public class Donor
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Donor_Id { get; set; }
 
         [Required]
@@ -38,8 +34,8 @@ namespace DatabaseProjectIAmDb.Models
         public int Receipt_Required_Bool { get; set; }
 
         [DisplayName("Referred by")]
-        [ForeignKey("Person")]
-        public int Person_Id { get; set; }
+        //[ForeignKey("Person")]
+        public virtual int? Person_Id { get; set; }
 
 
     }

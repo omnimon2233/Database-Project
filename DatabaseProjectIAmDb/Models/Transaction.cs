@@ -11,6 +11,7 @@ namespace DatabaseProjectIAmDb.Models
     public class Transaction
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Transaction_Id { get; set; }
 
         [RegularExpression(@"^\d{16}$", ErrorMessage = "Must be 16 numbers, no spaces. ")]
